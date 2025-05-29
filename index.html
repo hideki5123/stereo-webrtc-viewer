@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stereo Camera Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .controls {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #333;
+            border-radius: 8px;
+        }
+        .video-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .video-stream {
+            flex: 1;
+            background: #222;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .stereo-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #222;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .stereo-video {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .stereo-video.left {
+            left: 0;
+        }
+        .stereo-video.right {
+            right: 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: #007acc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background: #222;
+            color: white;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            background: #444;
+        }
+        .status.connected {
+            background: #2d5a2d;
+        }
+        .status.error {
+            background: #5a2d2d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stereo Camera Viewer</h1>
+        
+        <div class="controls">
+            <h3>Connection Settings</h3>
+            <input type="text" id="signaling-url" placeholder="Sora Signaling URL" value="wss://sora.example.com/signaling">
+            <input type="text" id="channel-id-left" placeholder="Left Camera Channel ID" value="left-camera">
+            <input type="text" id="channel-id-right" placeholder="Right Camera Channel ID" value="right-camera">
+            <br>
+            <button id="connect-btn">Connect to Stereo Cameras</button>
+            <button id="disconnect-btn" disabled>Disconnect</button>
+            <button id="vr-btn" disabled>Enter VR Mode</button>
+        </div>
+
+        <div class="status" id="status">Ready to connect</div>
+
+        <div class="video-container">
+            <div class="video-stream">
+                <h4>Left Camera</h4>
+                <video id="left-video" autoplay muted playsinline></video>
+            </div>
+            <div class="video-stream">
+                <h4>Right Camera</h4>
+                <video id="right-video" autoplay muted playsinline></video>
+            </div>
+        </div>
+
+        <div class="stereo-container">
+            <h4>Stereoscopic View (Side-by-side)</h4>
+            <video id="stereo-left" class="stereo-video left" autoplay muted playsinline></video>
+            <video id="stereo-right" class="stereo-video right" autoplay muted playsinline></video>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
