@@ -1,5 +1,5 @@
 {
-  "name": "stereo-camera-viewer",
+  "name": "stereo-webrtc-viewer",
   "version": "1.0.0",
   "description": "Web-based stereoscopic camera viewer using Sora WebRTC and WebXR for VR",
   "main": "dist/index.js",
