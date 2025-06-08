@@ -27,7 +27,7 @@ npm run preview      # Preview production build
 
 ## Core Module Structure
 
-- **`main.ts`**: Main application entry point and UI coordination
+- **`main.ts`**: Main application entry point. Handles UI interactions, collects Sora configuration (signaling URL, channel IDs) from user input, and coordinates `StereoCameraManager` and `WebXRManager`.
 - **`stereo-camera-manager.ts`**: Manages dual WebRTC connections to overcome Sora's single-track limitation
 - **`sora-connection.ts`**: Individual Sora WebRTC connection wrapper
 - **`webxr-manager.ts`**: WebXR VR rendering with stereo video textures and WebGL shaders
